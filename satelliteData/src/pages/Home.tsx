@@ -20,6 +20,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [filters, setFilters] = useState<{
     objectTypes: string[];
     orbitCodes: string[];
@@ -125,6 +126,45 @@ const Home = () => {
           </div>
         )}
       </div>
+        {/* Mobile View Button */}
+<div className="lg:hidden flex justify-end mb-4 mr-4 mt-3">
+  <button
+    onClick={() => setSidebarOpen(true)}
+    className="px-4 py-2 bg-blue-600 text-white rounded-md shadow"
+  >
+    View Selected ({selected.length})
+  </button>
+</div>
+
+
+{/* Slide-in Sidebar for Mobile/Tablet */}
+<div
+  className={`lg:hidden fixed inset-0 z-40 transition-transform duration-300 ${
+    sidebarOpen ? 'translate-x-0' : 'translate-x-full'
+  }`}
+>
+  {/* Overlay background */}
+  <div
+    className="absolute inset-0 bg-black bg-opacity-30"
+    onClick={() => setSidebarOpen(false)}
+  />
+
+  {/* Sidebar panel */}
+  <div className="absolute right-0 top-0 h-full w-80 bg-black shadow-xl border-l border-gray-200 p-4 overflow-y-auto">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-lg font-semibold">Selected Items</h2>
+      <button
+        onClick={() => setSidebarOpen(false)}
+        className="text-red-500 hover:text-red-700"
+        aria-label="Close sidebar"
+      >
+        ✕
+      </button>
+    </div>
+    <SelectedSidebar selected={selected} setSelected={setSelected} />
+  </div>
+</div>
+
 
       <div className="hidden lg:block w-[320px] bg-gray-50 border-l border-gray-200 sticky top-0 h-screen overflow-y-auto">
         <SelectedSidebar selected={selected} setSelected={setSelected}/>
