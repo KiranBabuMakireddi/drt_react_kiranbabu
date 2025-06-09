@@ -10,7 +10,9 @@ This project is a drag-and-drop interface built with **React**, **Vite**, **char
 ### 1. Clone the Repository
 
 ```bash
-
+    git colne https://github.com/KiranBabuMakireddi/drt_react_kiranbabu.git
+    cd your_folder
+    cd satelliteData
 ```
 
 ### 2. Install Dependencies
