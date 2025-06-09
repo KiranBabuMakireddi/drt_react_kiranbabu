@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import type { Satellite } from '../types/satellite';
 import { FaTimes } from 'react-icons/fa';
 
@@ -8,7 +8,7 @@ interface SelectedSidebarProps {
 }
 
 const SelectedSidebar = ({ selected, setSelected }: SelectedSidebarProps) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleRemove = (id: string) => {
   setSelected(selected.filter((s) => s.noradCatId !== id));
@@ -19,10 +19,10 @@ const SelectedSidebar = ({ selected, setSelected }: SelectedSidebarProps) => {
     setSelected([]);
   };
 
-  const handleProceed = () => {
-    localStorage.setItem('selected_satellites', JSON.stringify(selected));
-    navigate('/selected');
-  };
+  // const handleProceed = () => {
+  //   localStorage.setItem('selected_satellites', JSON.stringify(selected));
+  //   navigate('/selected');
+  // };
 
   return (
     <div className="w-72 h-full bg-[#0e0f1a] text-white p-4 flex flex-col border-l border-[#1f2233]">
@@ -56,7 +56,7 @@ const SelectedSidebar = ({ selected, setSelected }: SelectedSidebarProps) => {
 
       {/* Proceed button */}
       <button
-        onClick={handleProceed}
+        // onClick={handleProceed}
         disabled={selected.length === 0}
         className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded text-center font-semibold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
       >
